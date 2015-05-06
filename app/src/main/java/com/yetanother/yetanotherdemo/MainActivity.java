@@ -121,12 +121,14 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
         if(mGoogleMap!=null) {
             for(int i=0; i<markers.length; i++){
                 MarkerModel marker = markers[i];
+                if(marker.getIdle()==1) {
+                    continue;
+                }
                 LatLng position = new LatLng(Double.parseDouble(marker.getLat()),
                         Double.parseDouble(marker.getLng()));
                 mGoogleMap.addMarker(new MarkerOptions()
                         .title(marker.getRoute())
                         .snippet(marker.getDescription())
-                        .snippet(marker.getSpeed())
                         .position(position));
             }
         }
