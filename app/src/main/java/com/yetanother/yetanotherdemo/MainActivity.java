@@ -36,6 +36,13 @@ public class MainActivity extends ActionBarActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        String label;
+        label = getIntent().getStringExtra("activity_label");
+        if(!label.equals("")) {
+            getSupportActionBar().setTitle(label);
+        }
+
         MapFragment mapFragment = (MapFragment) getFragmentManager()
                 .findFragmentById(R.id.google_map);
         mapFragment.getMapAsync(this);
